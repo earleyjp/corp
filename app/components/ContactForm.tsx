@@ -3,7 +3,6 @@ export default function ContactForm() {
 
   return (
     <form action="https://formspree.io/f/mlgvoadl" method="POST" className="space-y-6">
-      <input type="hidden" name="_subject" value="[EJP株式会社] お問い合わせ" />
       <input type="hidden" name="_next" value={`${siteUrl}/contact?submitted=1`} />
 
       <div>
