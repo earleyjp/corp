@@ -1,65 +1,138 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div>
+      {/* ヒーローセクション */}
+      <section className="bg-white border-b border-slate-200">
+        <div className="max-w-5xl mx-auto px-4 py-20 text-center">
+          <div className="flex justify-center mb-8">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/ejp-assets/ejp-logo-new.png"
+              alt="EJP株式会社 ロゴ"
+              width={100}
+              height={100}
+              className="h-24 w-24 rounded-2xl object-contain"
+              priority
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+            EJP株式会社
+          </h1>
+          <p className="text-xl text-slate-500 mb-2 font-medium">
+            「モノ」づくりの楽しさを探求し続けている会社です。
+          </p>
+          <p className="text-slate-500 mb-10 max-w-xl mx-auto leading-relaxed">
+            IoT・組み込み・WEBアプリなど多様なソフトウェア開発から、ボードゲームの企画・製造・販売まで、幅広い分野でものづくりに取り組んでいます。
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              href="/business"
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition font-medium shadow-sm"
+            >
+              事業内容を見る
+            </Link>
+            <Link
+              href="/contact"
+              className="bg-white text-blue-600 border border-blue-200 px-8 py-3 rounded-lg hover:bg-blue-50 transition font-medium shadow-sm"
+            >
+              お問い合わせ
+            </Link>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* 事業紹介 */}
+      <section className="max-w-5xl mx-auto px-4 py-16">
+        <h2 className="text-2xl font-bold text-center text-slate-800 mb-10">主な事業</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* ソフトウェア開発 */}
+          <div className="bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-md transition">
+            <div className="text-blue-600 text-3xl mb-4">💻</div>
+            <h3 className="text-xl font-bold text-slate-800 mb-3">ソフトウェア開発</h3>
+            <p className="text-slate-600 leading-relaxed mb-4">
+              IoT・組み込みから WEBアプリまで、多様なソフトウェア開発の実績があります。ネットワークプロトコル開発のノウハウを活かした提案も行っています。
+            </p>
+            <ul className="text-sm text-slate-500 space-y-1 mb-6">
+              <li>・ 組み込み・制御系ソフトウェア</li>
+              <li>・ WEBアプリケーション</li>
+              <li>・ ネットワークプロトコル開発</li>
+              <li>・ IoTデバイス開発</li>
+            </ul>
+            <Link href="/business" className="text-blue-600 text-sm font-medium hover:underline">
+              詳細を見る →
+            </Link>
+          </div>
+
+          {/* ボードゲーム */}
+          <div className="bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-md transition">
+            <div className="text-blue-600 text-3xl mb-4">🎲</div>
+            <h3 className="text-xl font-bold text-slate-800 mb-3">ボードゲーム制作・販売</h3>
+            <p className="text-slate-600 leading-relaxed mb-4">
+              「EJPゲームズ」ブランドにてボードゲームの企画・制作・販売を行っています。ルール設計から印刷・製造まで一貫して手がけています。
+            </p>
+            <ul className="text-sm text-slate-500 space-y-1 mb-6">
+              <li>・ ゲームルール・シナリオ設計</li>
+              <li>・ イラスト・デザイン制作</li>
+              <li>・ テストプレイ・品質保証</li>
+              <li>・ 印刷・製造・販売</li>
+            </ul>
+            <Link href="/products" className="text-blue-600 text-sm font-medium hover:underline">
+              製品一覧を見る →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* EJP Games セクション */}
+      <section className="bg-white border-y border-slate-200">
+        <div className="max-w-5xl mx-auto px-4 py-16">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <p className="text-blue-600 font-semibold text-sm mb-2 uppercase tracking-wider">関連ブランド</p>
+              <h2 className="text-3xl font-bold text-slate-800 mb-4">EJPゲームズ</h2>
+              <p className="text-slate-600 leading-relaxed mb-6">
+                本格ボードゲーム・パーティーゲーム・知育ゲームなど多彩なアナログゲームを企画・開発・販売しています。
+                プロモーション動画やマンガ制作まで、ゲームに関するすべてを一貫して行っています。
+              </p>
+              <a
+                href="https://ejpgames.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-slate-800 text-white px-6 py-3 rounded-lg hover:bg-slate-900 transition font-medium text-sm"
+              >
+                EJPゲームズ 公式サイト ↗
+              </a>
+            </div>
+            <div className="flex justify-center">
+              <a href="https://ejpgames.com" target="_blank" rel="noopener noreferrer">
+                <Image
+                  src="/ejp-assets/ejpgames-logo.png"
+                  alt="EJPゲームズ ロゴ"
+                  width={320}
+                  height={86}
+                  className="h-auto w-full max-w-xs object-contain"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="max-w-5xl mx-auto px-4 py-16 text-center">
+        <h2 className="text-2xl font-bold text-slate-800 mb-4">ご相談・お問い合わせ</h2>
+        <p className="text-slate-600 mb-8 max-w-lg mx-auto">
+          ソフトウェア開発やボードゲームに関するご相談など、お気軽にお問い合わせください。
+        </p>
+        <Link
+          href="/contact"
+          className="inline-block bg-blue-600 text-white px-10 py-4 rounded-lg hover:bg-blue-700 transition font-semibold shadow-sm"
+        >
+          お問い合わせフォーム
+        </Link>
+      </section>
     </div>
   );
 }

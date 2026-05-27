@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EJP株式会社 公式サイト
 
-## Getting Started
+Next.js と Tailwind CSS で構築した静的なコーポレートサイトです。GitHub Pages で無料運用できます。
 
-First, run the development server:
+## 主な機能
+
+- 完全静的な Next.js サイト
+- GitHub Actions による自動デプロイ
+- Formspree 連携のお問い合わせフォーム
+- レスポンシブ対応
+- TypeScript による型安全な実装
+
+## 開発手順
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+開発サーバー: http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+ビルド:
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Formspree 設定
 
-## Learn More
+1. https://formspree.io にサインアップする
+2. 新規フォームを作成し、受信先に info@earley.jp を設定する
+3. フォーム ID を取得する（例: f/YOUR_ID）
+4. app/components/ContactForm.tsx の送信先 URL を更新する
 
-To learn more about Next.js, take a look at the following resources:
+## デプロイ
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+main ブランチへ push すると、GitHub Actions で自動デプロイされます。
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ドメイン設定
 
-## Deploy on Vercel
+GitHub Pages の設定画面でカスタムドメイン earley.jp を指定してください。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 技術スタック
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js 16（静的エクスポート）
+- TypeScript
+- Tailwind CSS
+- GitHub Pages
+- Formspree

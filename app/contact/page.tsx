@@ -1,0 +1,25 @@
+import ContactForm from "../components/ContactForm";
+
+export default function Contact() {
+  return (
+    <div>
+      {/* ページヘッダー */}
+      <section className="bg-white border-b border-slate-200">
+        <div className="max-w-5xl mx-auto px-4 py-14">
+          <p className="text-blue-600 font-semibold text-sm mb-2 uppercase tracking-wider">Contact</p>
+          <h1 className="text-4xl font-bold text-slate-800 mb-4">お問い合わせ</h1>
+          <p className="text-slate-500 max-w-xl">
+            ご質問やご相談がございましたら、下記フォームよりお気軽にお問い合わせください。3営業日以内を目安にご返信いたします。
+          </p>
+        </div>
+      </section>
+      <div className="max-w-4xl mx-auto px-4 py-12 space-y-8">
+
+      <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm">
+        <h2 className="text-2xl font-bold mb-6 text-slate-800">お問い合わせフォーム</h2>
+        <ContactForm />
+      </div>
+    </div>
+    </div>
+  );
+}
