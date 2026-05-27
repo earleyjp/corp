@@ -1,49 +1,12 @@
-"use client";
-
-import { FormEvent, useState } from "react";
-
 export default function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState("");
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitMessage("");
-
-    const formData = new FormData(e.currentTarget);
-
-    try {
-      const response = await fetch("https://formspree.io/f/mlgvoadl", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-        },
-        body: formData,
-      });
-
-      if (response.ok) {
-        setSubmitMessage(
-          "お問い合わせありがとうございます。確認いたします。"
-        );
-        e.currentTarget.reset();
-        setTimeout(() => setSubmitMessage(""), 5000);
-      } else {
-        const result = await response.json().catch(() => null);
-        const message =
-          result?.errors?.[0]?.message ??
-          "送信に失敗しました。お手数ですが、もう一度お試しください。";
-        setSubmitMessage(message);
-      }
-    } catch {
-      setSubmitMessage("エラーが発生しました。お手数ですが、もう一度お試しください。");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://earley.jp";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form action="https://formspree.io/f/mlgvoadl" method="POST" className="space-y-6">
+      <input type="hidden" name="_subject" value="[EJP株式会社] お問い合わせ" />
+      <input type="hidden" name="_next" value={`${siteUrl}/contact/thanks`} />
+      <input type="hidden" name="_captcha" value="false" />
+
       <div>
         <label htmlFor="name" className="block text-sm font-medium mb-2">
           お名前 <span className="text-red-600">*</span>
@@ -100,24 +63,15 @@ export default function ContactForm() {
         />
       </div>
 
-      {submitMessage && (
-        <div
-          className={`p-4 rounded-lg ${
-            submitMessage.includes("ありがとうございます")
-              ? "bg-green-50 text-green-800 border border-green-200"
-              : "bg-red-50 text-red-800 border border-red-200"
-          }`}
-        >
-          {submitMessage}
-        </div>
-      )}
+      <p className="text-sm text-slate-500">
+        送信後、完了ページへ移動します。送信できない場合は時間をおいて再度お試しください。
+      </p>
 
       <button
         type="submit"
-        disabled={isSubmitting}
-        className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed font-medium"
+        className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
       >
-        {isSubmitting ? "送信中..." : "送信する"}
+        送信する
       </button>
     </form>
   );
