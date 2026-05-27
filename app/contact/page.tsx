@@ -23,7 +23,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Contact() {
+export default function Contact({
+  searchParams,
+}: {
+  searchParams?: { submitted?: string };
+}) {
+  const isSubmitted = searchParams?.submitted === "1";
+
   return (
     <div>
       {/* ページヘッダー */}
@@ -37,6 +43,12 @@ export default function Contact() {
         </div>
       </section>
       <div className="max-w-4xl mx-auto px-4 py-12 space-y-8">
+
+      {isSubmitted && (
+        <div className="bg-green-50 text-green-800 border border-green-200 rounded-xl p-4">
+          お問い合わせありがとうございます。送信を受け付けました。
+        </div>
+      )}
 
       <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm">
         <h2 className="text-2xl font-bold mb-6 text-slate-800">お問い合わせフォーム</h2>

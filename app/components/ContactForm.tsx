@@ -4,8 +4,7 @@ export default function ContactForm() {
   return (
     <form action="https://formspree.io/f/mlgvoadl" method="POST" className="space-y-6">
       <input type="hidden" name="_subject" value="[EJP株式会社] お問い合わせ" />
-      <input type="hidden" name="_next" value={`${siteUrl}/contact/thanks`} />
-      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value={`${siteUrl}/contact?submitted=1`} />
 
       <div>
         <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -64,7 +63,7 @@ export default function ContactForm() {
       </div>
 
       <p className="text-sm text-slate-500">
-        送信後、完了ページへ移動します。送信できない場合は時間をおいて再度お試しください。
+        送信後、このページに戻って送信完了メッセージを表示します。送信できない場合は時間をおいて再度お試しください。
       </p>
 
       <button
