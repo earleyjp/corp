@@ -25,11 +25,8 @@ jobs:
         with:
           node-version: "20"
 
-      - name: npm cache をクリア
-        run: npm cache clean --force
-
       - name: 依存パッケージのインストール
-        run: npm ci
+        run: npm install --prefer-offline --no-audit
 
       - name: ビルド
         run: npm run build
