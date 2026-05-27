@@ -140,21 +140,6 @@ export default function HeroSection() {
             お問い合わせ
           </Link>
         </motion.div>
-
-        {/* スクロールインジケーター */}
-        <motion.div
-          className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hidden md:flex"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-        >
-          <span className="text-slate-400 text-xs tracking-widest uppercase">Scroll</span>
-          <motion.div
-            className="w-0.5 h-10 bg-gradient-to-b from-blue-400 to-transparent rounded"
-            animate={{ scaleY: [0, 1, 0], originY: 0 }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </motion.div>
       </div>
     </section>
   );
