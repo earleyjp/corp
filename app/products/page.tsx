@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import SocialShare from "../components/SocialShare";
+import AnimatedSection from "../components/AnimatedSection";
 
 export const metadata: Metadata = {
   title: "製品情報",
@@ -28,20 +29,33 @@ export default function Products() {
   return (
     <div>
       {/* ページヘッダー */}
-      <section className="bg-white border-b border-slate-200">
-        <div className="max-w-5xl mx-auto px-4 py-14">
-          <p className="text-blue-600 font-semibold text-sm mb-2 uppercase tracking-wider">Products</p>
-          <h1 className="text-4xl font-bold text-slate-800 mb-4">製品情報</h1>
-          <p className="text-slate-500 max-w-xl">
-            EJP株式会社が展開するボードゲームブランド「EJPゲームズ」をご紹介します。
-          </p>
+      <section className="relative bg-slate-950 py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/ejp-assets/boardgame-components.jpg"
+            alt="ボードゲーム"
+            fill
+            className="object-cover opacity-15"
+          />
+          <div className="absolute inset-0 hero-grid opacity-30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/70 to-transparent" />
+        </div>
+        <div className="relative max-w-5xl mx-auto px-4">
+          <AnimatedSection>
+            <p className="text-amber-400 font-semibold text-sm uppercase tracking-[0.2em] mb-3">Products</p>
+            <h1 className="text-5xl font-bold text-white mb-4">製品情報</h1>
+            <p className="text-slate-400 max-w-xl text-lg">
+              EJP株式会社が展開するボードゲームブランド「EJPゲームズ」をご紹介します。
+            </p>
+          </AnimatedSection>
         </div>
       </section>
 
-      <div className="max-w-5xl mx-auto px-4 py-12 space-y-12">
+      <div className="max-w-5xl mx-auto px-4 py-16 space-y-12">
 
         {/* EJPゲームズ */}
-        <section className="bg-white rounded-2xl border border-slate-200 p-8 md:p-10">
+        <AnimatedSection>
+        <section className="game-card card-glow-amber rounded-3xl p-8 md:p-12">
           <div className="grid md:grid-cols-2 gap-10 items-center mb-10">
             <div>
               <a href="https://ejpgames.com" target="_blank" rel="noopener noreferrer">
@@ -120,9 +134,11 @@ export default function Products() {
             </p>
           </div>
         </section>
+        </AnimatedSection>
 
         {/* テストプレイ会 & アプリ */}
-        <section className="bg-white rounded-2xl border border-slate-200 p-8 md:p-10">
+        <AnimatedSection delay={0.1}>
+        <section className="game-card card-glow rounded-3xl p-8 md:p-10">
           <h2 className="text-2xl font-bold text-slate-800 mb-2">テストプレイ会</h2>
           <p className="text-slate-600 leading-relaxed mb-6">
             EJPゲームズでは定期的にテストプレイ会を開催しています。新作ゲームのテストプレイや既存ゲームのプレイ体験ができます。参加申し込みは専用サイトから受け付けています。
@@ -171,11 +187,15 @@ export default function Products() {
             </a>
           </div>
         </section>
+        </AnimatedSection>
 
         {/* お問い合わせ誘導 */}
-        <section className="bg-blue-50 rounded-2xl border border-blue-100 p-8 text-center">
-          <h2 className="text-xl font-bold text-slate-800 mb-3">ボードゲームに関するお問い合わせ</h2>
-          <p className="text-slate-600 mb-6 text-sm">
+        <AnimatedSection delay={0.1}>
+        <section className="relative overflow-hidden bg-slate-950 rounded-3xl p-8 text-center">
+          <div className="absolute inset-0 hero-grid opacity-30" />
+          <div className="relative">
+          <h2 className="text-2xl font-bold text-white mb-3">ボードゲームに関するお問い合わせ</h2>
+          <p className="text-slate-400 mb-6 text-sm">
             ボードゲームに関するお問い合わせは EJPゲームズ 公式サイトのフォームよりお願いします。
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
@@ -183,7 +203,7 @@ export default function Products() {
               href="https://ejpgames.com/contact/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-slate-800 text-white px-6 py-3 rounded-lg hover:bg-slate-900 transition text-sm font-medium"
+              className="inline-block bg-gradient-to-r from-amber-500 to-orange-500 text-white px-7 py-3 rounded-xl hover:opacity-90 transition text-sm font-semibold shadow-lg shadow-amber-500/25"
             >
               EJPゲームズへの問い合わせ ↗
             </a>
@@ -194,7 +214,9 @@ export default function Products() {
               EJP株式会社への問い合わせ
             </Link>
           </div>
+          </div>
         </section>
+        </AnimatedSection>
 
       </div>
 

@@ -100,11 +100,11 @@ export default function RootLayout({
         />
         <SiteNav />
 
-        {/* メインコンテンツ */}
-        <main className="min-h-screen bg-slate-50">{children}</main>
+        {/* メインコンテンツ（固定ナビ分のパディング） */}
+        <main className="min-h-screen pt-16">{children}</main>
 
         {/* フッター */}
-        <footer className="bg-gray-900 text-white py-10 mt-16">
+        <footer className="bg-slate-950 text-white py-16 border-t border-white/5">
           <div className="max-w-5xl mx-auto px-4">
             <div className="grid md:grid-cols-3 gap-8 mb-8">
               <div>
