@@ -24,7 +24,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
+
+      - name: npm cache をクリア
+        run: npm cache clean --force
 
       - name: 依存パッケージのインストール
         run: npm ci
