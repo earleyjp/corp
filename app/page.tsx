@@ -4,6 +4,11 @@ import Link from "next/link";
 import SocialShare from "./components/SocialShare";
 import HeroSection from "./components/HeroSection";
 import AnimatedSection from "./components/AnimatedSection";
+import GameParticles from "./components/GameParticles";
+import GlitchText from "./components/GlitchText";
+import ScanlineOverlay from "./components/ScanlineOverlay";
+import MouseTrackCard from "./components/MouseTrackCard";
+import SplashScreenClient from "./components/SplashScreenClient";
 
 export const metadata: Metadata = {
   title: "EJP株式会社",
@@ -63,6 +68,9 @@ const snsLinks = [
 export default function Home() {
   return (
     <div>
+      {/* スプラッシュスクリーン */}
+      <SplashScreenClient />
+
       {/* ヒーロー（全画面・暗色・アニメーション） */}
       <HeroSection />
 
@@ -71,7 +79,9 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
             <p className="text-blue-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">Our Business</p>
-            <h2 className="text-4xl font-bold text-slate-900">主な事業</h2>
+            <h2 className="text-4xl font-bold text-slate-900">
+              <GlitchText text="主な事業" />
+            </h2>
             <p className="text-slate-500 mt-4 max-w-lg mx-auto">
               ソフトウェアとアナログゲーム、二つの領域で「つくる」ことに向き合っています。
             </p>
@@ -80,15 +90,16 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8">
             {businessCards.map((card, i) => (
               <AnimatedSection key={card.title} delay={i * 0.15} direction="up">
-                <div className="game-card card-glow rounded-3xl p-8 h-full flex flex-col">
-                  {/* アイコン */}
-                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${card.iconBg} text-2xl mb-5 shadow-lg`}>
-                    {card.icon}
-                  </div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">{card.label}</p>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4">{card.title}</h3>
-                  <p className="text-slate-600 leading-relaxed mb-5 flex-1">{card.description}</p>
-                  {/* タグ */}
+                <GameParticles className="h-full">
+                  <MouseTrackCard className="game-card card-glow rounded-3xl p-8 h-full flex flex-col">
+                    {/* アイコン */}
+                    <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${card.iconBg} text-2xl mb-5 shadow-lg`}>
+                      {card.icon}
+                    </div>
+                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">{card.label}</p>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-4">{card.title}</h3>
+                    <p className="text-slate-600 leading-relaxed mb-5 flex-1">{card.description}</p>
+                    {/* タグ */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {card.tags.map((tag) => (
                       <span
@@ -98,15 +109,16 @@ export default function Home() {
                         {tag}
                       </span>
                     ))}
-                  </div>
-                  <Link
-                    href={card.href}
-                    className="inline-flex items-center gap-2 text-blue-600 font-semibold text-sm hover:gap-3 transition-all"
-                  >
-                    {card.linkLabel}
-                    <span className="text-lg">→</span>
-                  </Link>
-                </div>
+                    </div>
+                    <Link
+                      href={card.href}
+                      className="inline-flex items-center gap-2 text-blue-600 font-semibold text-sm hover:gap-3 transition-all"
+                    >
+                      {card.linkLabel}
+                      <span className="text-lg">→</span>
+                    </Link>
+                  </MouseTrackCard>
+                </GameParticles>
               </AnimatedSection>
             ))}
           </div>
@@ -171,45 +183,46 @@ export default function Home() {
       </section>
 
       {/* ========== EJP Games ========== */}
-      <section className="relative bg-white py-28 overflow-hidden">
-        {/* 背景デコレーション */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-50 rounded-full blur-3xl opacity-60 -translate-y-1/2 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-orange-50 rounded-full blur-3xl opacity-60 translate-y-1/2 -translate-x-1/3" />
+      <ScanlineOverlay intensity="low" animateOnHover={true}>
+        <section className="relative bg-white py-28 overflow-hidden">
+          {/* 背景デコレーション */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-50 rounded-full blur-3xl opacity-60 -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-0 left-0 w-72 h-72 bg-orange-50 rounded-full blur-3xl opacity-60 translate-y-1/2 -translate-x-1/3" />
 
-        <div className="relative max-w-5xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* 画像側 */}
-            <AnimatedSection direction="left" delay={0.1}>
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-orange-400/20 rounded-3xl blur-2xl" />
-                <div className="relative rounded-3xl overflow-hidden shadow-xl shadow-amber-900/10 border border-amber-200/50">
-                  <Image
-                    src="/ejp-assets/boardgame-components.jpg"
-                    alt="ボードゲームコンポーネント"
-                    width={600}
-                    height={420}
-                    className="object-cover w-full h-72 md:h-80"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-amber-950/30 to-transparent" />
+          <div className="relative max-w-5xl mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* 画像側 */}
+              <AnimatedSection direction="left" delay={0.1}>
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-orange-400/20 rounded-3xl blur-2xl" />
+                  <div className="relative rounded-3xl overflow-hidden shadow-xl shadow-amber-900/10 border border-amber-200/50 holographic-card">
+                    <Image
+                      src="/ejp-assets/boardgame-components.jpg"
+                      alt="ボードゲームコンポーネント"
+                      width={600}
+                      height={420}
+                      className="object-cover w-full h-72 md:h-80"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-amber-950/30 to-transparent" />
+                  </div>
+                  {/* フローティングロゴ */}
+                  <div className="absolute -bottom-5 -right-5 bg-white rounded-2xl p-4 shadow-xl border border-amber-100">
+                    <Image
+                      src="/ejp-assets/ejpgames-logo.png"
+                      alt="EJPゲームズ"
+                      width={140}
+                      height={38}
+                      className="h-9 w-auto object-contain"
+                    />
+                  </div>
                 </div>
-                {/* フローティングロゴ */}
-                <div className="absolute -bottom-5 -right-5 bg-white rounded-2xl p-4 shadow-xl border border-amber-100">
-                  <Image
-                    src="/ejp-assets/ejpgames-logo.png"
-                    alt="EJPゲームズ"
-                    width={140}
-                    height={38}
-                    className="h-9 w-auto object-contain"
-                  />
-                </div>
-              </div>
-            </AnimatedSection>
+              </AnimatedSection>
 
-            {/* テキスト側 */}
-            <AnimatedSection direction="right" delay={0.2}>
-              <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-4">EJP Games Brand</p>
-              <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
-                アナログゲームで<br />
+              {/* テキスト側 */}
+              <AnimatedSection direction="right" delay={0.2}>
+                <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-4">EJP Games Brand</p>
+                <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
+                  アナログゲームで<br />
                 <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
                   遊ぶ楽しさを届ける
                 </span>
@@ -245,7 +258,8 @@ export default function Home() {
             </AnimatedSection>
           </div>
         </div>
-      </section>
+        </section>
+      </ScanlineOverlay>
 
       {/* ========== SNS ========== */}
       <section className="bg-slate-50 py-24 border-t border-slate-100">

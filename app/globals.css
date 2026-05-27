@@ -104,11 +104,175 @@ body {
   100% { transform: translateX(-50%); }
 }
 
+/* ===== グリッチエフェクト ===== */
+@keyframes glitch-1 {
+  0% { clip-path: inset(40% 0 61% 0); transform: translate(0, 0); }
+  20% { clip-path: inset(92% 0 1% 0); transform: translate(-2px, 2px); }
+  40% { clip-path: inset(43% 0 1% 0); transform: translate(-2px, -2px); }
+  60% { clip-path: inset(25% 0 58% 0); transform: translate(2px, 2px); }
+  80% { clip-path: inset(54% 0 7% 0); transform: translate(2px, -2px); }
+  100% { clip-path: inset(58% 0 43% 0); transform: translate(0, 0); }
+}
+@keyframes glitch-2 {
+  0% { clip-path: inset(27% 0 58% 0); transform: translate(0, 0); }
+  20% { clip-path: inset(11% 0 58% 0); transform: translate(-2px, -2px); }
+  40% { clip-path: inset(69% 0 15% 0); transform: translate(2px, 2px); }
+  60% { clip-path: inset(18% 0 40% 0); transform: translate(-2px, 2px); }
+  80% { clip-path: inset(51% 0 12% 0); transform: translate(2px, -2px); }
+  100% { clip-path: inset(33% 0 53% 0); transform: translate(0, 0); }
+}
+
+/* ===== スキャンラインアニメーション ===== */
+@keyframes scan-lines {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.8; }
+}
+
+/* ===== ホロフラフィック効果 ===== */
+@keyframes holographic-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes rainbow-border {
+  0% { border-color: #ff0080; box-shadow: 0 0 20px #ff0080; }
+  25% { border-color: #7928ca; box-shadow: 0 0 20px #7928ca; }
+  50% { border-color: #06b6d4; box-shadow: 0 0 20px #06b6d4; }
+  75% { border-color: #0891b2; box-shadow: 0 0 20px #0891b2; }
+  100% { border-color: #ff0080; box-shadow: 0 0 20px #ff0080; }
+}
+
+/* ===== パーティクルエフェクト ===== */
+@keyframes particle-burst-1 {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(40px, -60px) scale(0); opacity: 0; }
+}
+@keyframes particle-burst-2 {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(-40px, -60px) scale(0); opacity: 0; }
+}
+@keyframes particle-burst-3 {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(60px, 40px) scale(0); opacity: 0; }
+}
+@keyframes particle-burst-4 {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(-60px, 40px) scale(0); opacity: 0; }
+}
+
+/* ===== ネオンボタン ===== */
+@keyframes neon-glow {
+  0%, 100% { text-shadow: 0 0 5px #3b82f6, 0 0 10px #3b82f6, 0 0 20px #3b82f6; }
+  50% { text-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 40px #3b82f6; }
+}
+
+/* ===== スプリットテキスト ===== */
+@keyframes split-reveal-top {
+  0% { transform: translateY(-100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes split-reveal-bottom {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
 .animate-float { animation: float 6s ease-in-out infinite; }
 .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
 .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
 .animate-spin-slow { animation: spin-slow 20s linear infinite; }
 .animate-ticker { animation: ticker 20s linear infinite; }
+.animate-glitch-1 { animation: glitch-1 0.4s ease-in-out; }
+.animate-glitch-2 { animation: glitch-2 0.4s ease-in-out; }
+.animate-scan-lines { animation: scan-lines 8s linear infinite; animation-play-state: paused; }
+.animate-holographic { animation: holographic-shimmer 6s ease-in-out infinite; }
+.animate-rainbow-border { animation: rainbow-border 4s ease-in-out infinite; }
+.animate-neon-glow { animation: neon-glow 2s ease-in-out infinite; }
+
+/* ===== グリッチテキスト用 ===== */
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.glitch::before {
+  animation: glitch-1 0.3s infinite;
+  color: #ff0080;
+  z-index: -1;
+}
+.glitch::after {
+  animation: glitch-2 0.3s infinite;
+  color: #00ff00;
+  z-index: -2;
+}
+
+/* ===== スキャンラインオーバーレイ ===== */
+.scanline-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ===== ホロフラフィックカード ===== */
+.holographic-card {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 0, 128, 0.1),
+    rgba(121, 40, 202, 0.1),
+    rgba(6, 182, 212, 0.1),
+    rgba(8, 145, 178, 0.1)
+  );
+  background-size: 200% 200%;
+  border: 2px solid transparent;
+  border-radius: 1.5rem;
+  background-clip: padding-box;
+  box-shadow: inset 0 0 0 2px transparent, 0 0 20px rgba(255, 0, 128, 0.3), 0 0 40px rgba(121, 40, 202, 0.2);
+}
+.holographic-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 0, 128, 0.5), rgba(121, 40, 202, 0.3), rgba(6, 182, 212, 0.3), rgba(8, 145, 178, 0.5));
+  border-radius: 1.5rem;
+  z-index: -1;
+  animation: holographic-shimmer 3s ease-in-out infinite;
+}
+.holographic-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  border-radius: 1.5rem;
+  animation: holographic-shimmer 3s ease-in-out infinite;
+}
 
 /* ===== スクロールバー ===== */
 ::-webkit-scrollbar { width: 6px; }
