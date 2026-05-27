@@ -1,0 +1,21 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DBEAFE"/>
+      <stop offset="0.5" stop-color="#EFF6FF"/>
+      <stop offset="1" stop-color="#F8FAFC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="36" fill="url(#g)"/>
+  <circle cx="1030" cy="126" r="72" fill="#3B82F6" fill-opacity="0.12"/>
+  <circle cx="1075" cy="505" r="96" fill="#0F172A" fill-opacity="0.08"/>
+  <rect x="86" y="84" width="164" height="164" rx="36" fill="#FFFFFF" stroke="#BFDBFE"/>
+  <text x="168" y="184" text-anchor="middle" fill="#2563EB" font-family="Noto Sans JP, Arial, sans-serif" font-size="64" font-weight="700">EJP</text>
+  <text x="86" y="334" fill="#2563EB" font-family="Noto Sans JP, Arial, sans-serif" font-size="34" font-weight="700">EJP株式会社</text>
+  <text x="86" y="394" fill="#0F172A" font-family="Noto Sans JP, Arial, sans-serif" font-size="60" font-weight="700">ソフトウェア開発と</text>
+  <text x="86" y="462" fill="#0F172A" font-family="Noto Sans JP, Arial, sans-serif" font-size="60" font-weight="700">EJPゲームズの公式サイト</text>
+  <text x="86" y="535" fill="#475569" font-family="Noto Sans JP, Arial, sans-serif" font-size="30" font-weight="500">IoT・組み込み・WEBアプリ・ボードゲーム</text>
+  <rect x="790" y="372" width="314" height="142" rx="28" fill="#FFFFFF" stroke="#BFDBFE"/>
+  <text x="947" y="430" text-anchor="middle" fill="#0F172A" font-family="Noto Sans JP, Arial, sans-serif" font-size="32" font-weight="700">EJPゲームズ</text>
+  <text x="947" y="474" text-anchor="middle" fill="#64748B" font-family="Noto Sans JP, Arial, sans-serif" font-size="24" font-weight="500">Board Games / Test Play / App</text>
+</svg>

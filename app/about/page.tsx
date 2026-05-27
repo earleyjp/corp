@@ -1,4 +1,27 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import SocialShare from "../components/SocialShare";
+
+export const metadata: Metadata = {
+  title: "会社案内",
+  description:
+    "EJP株式会社の会社概要、代表ごあいさつ、事業の考え方をご案内します。",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "会社案内 | EJP株式会社",
+    description:
+      "EJP株式会社の会社概要、代表ごあいさつ、事業の考え方をご案内します。",
+    url: "/about",
+    images: [{ url: "/og/about.svg", width: 1200, height: 630, alt: "会社案内 | EJP株式会社" }],
+  },
+  twitter: {
+    card: "summary",
+    title: "会社案内 | EJP株式会社",
+    description:
+      "EJP株式会社の会社概要、代表ごあいさつ、事業の考え方をご案内します。",
+    images: ["/og/about.svg"],
+  },
+};
 
 export default function About() {
   return (
@@ -83,6 +106,12 @@ export default function About() {
         </section>
 
       </div>
+
+      <SocialShare
+        path="/about"
+        title="会社案内 | EJP株式会社"
+        description="会社概要と代表ごあいさつをご紹介します"
+      />
     </div>
   );
 }

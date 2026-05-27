@@ -1,5 +1,28 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import SocialShare from "./components/SocialShare";
+
+export const metadata: Metadata = {
+  title: "EJP株式会社",
+  description:
+    "EJP株式会社の公式サイト。IoT・組み込み・WEBアプリの開発と、EJPゲームズによるボードゲーム制作・販売を行っています。",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "EJP株式会社",
+    description:
+      "EJP株式会社の公式サイト。IoT・組み込み・WEBアプリの開発と、EJPゲームズによるボードゲーム制作・販売を行っています。",
+    url: "/",
+    images: [{ url: "/og/home.svg", width: 1200, height: 630, alt: "EJP株式会社" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "EJP株式会社",
+    description:
+      "EJP株式会社の公式サイト。IoT・組み込み・WEBアプリの開発と、EJPゲームズによるボードゲーム制作・販売を行っています。",
+    images: ["/og/home.svg"],
+  },
+};
 
 export default function Home() {
   return (
@@ -120,6 +143,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SNS */}
+      <section className="max-w-5xl mx-auto px-4 py-16">
+        <div className="bg-white rounded-2xl border border-slate-200 p-8 md:p-10">
+          <p className="text-blue-600 font-semibold text-sm mb-2 uppercase tracking-wider">SNS</p>
+          <h2 className="text-2xl font-bold text-slate-800 mb-4">最新情報はこちらでも発信しています</h2>
+          <p className="text-slate-600 mb-6 leading-relaxed">
+            会社のお知らせ、EJPゲームズの新作情報、テストプレイ会の案内などをSNSで発信しています。拡散しやすい導線を用意することで、認知拡大と再訪問の両方を狙えます。
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {[
+              { label: "X / Twitter", href: "https://twitter.com/earley_jp" },
+              { label: "Facebook", href: "https://facebook.com/earleyjp" },
+              { label: "GitHub", href: "https://github.com/earleyjp" },
+              { label: "LinkedIn", href: "https://www.linkedin.com/company/earleyjp" },
+              { label: "EJP Games X", href: "https://x.com/otemachispin" },
+              { label: "YouTube", href: "https://www.youtube.com/@ejp-games" },
+            ].map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 hover:border-blue-200 hover:bg-blue-50 transition font-medium"
+              >
+                {social.label} ↗
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="max-w-5xl mx-auto px-4 py-16 text-center">
         <h2 className="text-2xl font-bold text-slate-800 mb-4">ご相談・お問い合わせ</h2>
@@ -133,6 +187,12 @@ export default function Home() {
           お問い合わせフォーム
         </Link>
       </section>
+
+      <SocialShare
+        path="/"
+        title="EJP株式会社"
+        description="IoT・組み込み・WEBアプリ開発とEJPゲームズの情報"
+      />
     </div>
   );
 }

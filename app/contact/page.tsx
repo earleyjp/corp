@@ -1,4 +1,27 @@
+import type { Metadata } from "next";
 import ContactForm from "../components/ContactForm";
+import SocialShare from "../components/SocialShare";
+
+export const metadata: Metadata = {
+  title: "お問い合わせ",
+  description:
+    "EJP株式会社へのお問い合わせはこちら。ソフトウェア開発やボードゲームに関するご相談を受け付けています。",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "お問い合わせ | EJP株式会社",
+    description:
+      "EJP株式会社へのお問い合わせはこちら。ソフトウェア開発やボードゲームに関するご相談を受け付けています。",
+    url: "/contact",
+    images: [{ url: "/og/contact.svg", width: 1200, height: 630, alt: "お問い合わせ | EJP株式会社" }],
+  },
+  twitter: {
+    card: "summary",
+    title: "お問い合わせ | EJP株式会社",
+    description:
+      "EJP株式会社へのお問い合わせはこちら。ソフトウェア開発やボードゲームに関するご相談を受け付けています。",
+    images: ["/og/contact.svg"],
+  },
+};
 
 export default function Contact() {
   return (
@@ -19,6 +42,12 @@ export default function Contact() {
         <h2 className="text-2xl font-bold mb-6 text-slate-800">お問い合わせフォーム</h2>
         <ContactForm />
       </div>
+
+      <SocialShare
+        path="/contact"
+        title="お問い合わせ | EJP株式会社"
+        description="お問い合わせフォームからご相談を受け付けています"
+      />
     </div>
     </div>
   );

@@ -1,3 +1,27 @@
+import type { Metadata } from "next";
+import SocialShare from "../components/SocialShare";
+
+export const metadata: Metadata = {
+  title: "事業内容",
+  description:
+    "EJP株式会社のソフトウェア開発、自社製品の開発、ボードゲーム制作・販売についてご紹介します。",
+  alternates: { canonical: "/business" },
+  openGraph: {
+    title: "事業内容 | EJP株式会社",
+    description:
+      "EJP株式会社のソフトウェア開発、自社製品の開発、ボードゲーム制作・販売についてご紹介します。",
+    url: "/business",
+    images: [{ url: "/og/business.svg", width: 1200, height: 630, alt: "事業内容 | EJP株式会社" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "事業内容 | EJP株式会社",
+    description:
+      "EJP株式会社のソフトウェア開発、自社製品の開発、ボードゲーム制作・販売についてご紹介します。",
+    images: ["/og/business.svg"],
+  },
+};
+
 export default function Business() {
   return (
     <div>
@@ -116,6 +140,12 @@ export default function Business() {
         </section>
 
       </div>
+
+      <SocialShare
+        path="/business"
+        title="事業内容 | EJP株式会社"
+        description="ソフトウェア開発、自社製品、ボードゲーム事業"
+      />
     </div>
   );
 }

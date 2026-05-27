@@ -1,5 +1,28 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import SocialShare from "../components/SocialShare";
+
+export const metadata: Metadata = {
+  title: "製品情報",
+  description:
+    "EJPゲームズのボードゲーム、テストプレイ会、スマートフォンアプリの情報をご案内します。",
+  alternates: { canonical: "/products" },
+  openGraph: {
+    title: "製品情報 | EJP株式会社",
+    description:
+      "EJPゲームズのボードゲーム、テストプレイ会、スマートフォンアプリの情報をご案内します。",
+    url: "/products",
+    images: [{ url: "/og/products.svg", width: 1200, height: 630, alt: "製品情報 | EJP株式会社" }],
+  },
+  twitter: {
+    card: "summary",
+    title: "製品情報 | EJP株式会社",
+    description:
+      "EJPゲームズのボードゲーム、テストプレイ会、スマートフォンアプリの情報をご案内します。",
+    images: ["/og/products.svg"],
+  },
+};
 
 export default function Products() {
   return (
@@ -174,6 +197,12 @@ export default function Products() {
         </section>
 
       </div>
+
+      <SocialShare
+        path="/products"
+        title="製品情報 | EJP株式会社"
+        description="EJPゲームズ、テストプレイ会、スマホアプリ情報"
+      />
     </div>
   );
 }
