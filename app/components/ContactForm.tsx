@@ -9,22 +9,17 @@ export default function ContactForm() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitMessage("");
 
     const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      subject: formData.get("subject"),
-      message: formData.get("message"),
-    };
 
     try {
       const response = await fetch("https://formspree.io/f/mlgvoadl", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(data),
+        body: formData,
       });
 
       if (response.ok) {
@@ -34,7 +29,11 @@ export default function ContactForm() {
         e.currentTarget.reset();
         setTimeout(() => setSubmitMessage(""), 5000);
       } else {
-        setSubmitMessage("送信に失敗しました。お手数ですが、もう一度お試しください。");
+        const result = await response.json().catch(() => null);
+        const message =
+          result?.errors?.[0]?.message ??
+          "送信に失敗しました。お手数ですが、もう一度お試しください。";
+        setSubmitMessage(message);
       }
     } catch {
       setSubmitMessage("エラーが発生しました。お手数ですが、もう一度お試しください。");
